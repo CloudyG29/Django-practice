@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block main_content %}
+<div class="product-list">
+    {% for product in products %}
+    <a href="{% url 'practice:product_detail' product.id %}" class="product-link">
+            <div class="product-item">
+                <h4>{{ product.name }}</h4>
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'images/default_image.png' %}" alt="No image available">
+                {% endif %}
+                <h3>R{{ product.price }} </h3>
+            </div>
+    </a>   
+    {% endfor %}
+</div>
+
+{% endblock %}

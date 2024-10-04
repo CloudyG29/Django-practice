@@ -1,0 +1,18 @@
+<!-- templates/store/product_detail.html -->
+
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block main_content %}
+<div class="product-detail">
+    <h1>{{ product.name }}</h1>
+    {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    {% else %}
+        <img src="{% static 'images/default_image.png' %}" alt="No image available">
+    {% endif %}
+    <h3>Price: R{{ product.price }}</h3>
+    <pre>{{ product.description }}</pre> <!-- Assuming you have a description field -->
+</div>
+{% endblock %}

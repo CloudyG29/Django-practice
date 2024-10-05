@@ -45,10 +45,10 @@ jobs:
           path: |
             release.zip
             !venv/
-            
+
       - name: Start Gunicorn
         run: |
-            gunicorn --workers 3 --bind 0.0.0.0:8000 myproject.wsgi:application
+            gunicorn --workers 3 --bind 0.0.0.0:8000 practice.wsgi:application
 
   deploy:
     runs-on: ubuntu-latest

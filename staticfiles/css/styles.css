@@ -1,0 +1,78 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    flex: 1 1 calc(33.333% - 20px); /* Flex grow, flex shrink, and basis to make it responsive */
+    max-width: calc(33.333% - 20px); /* Maximum width */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+/* Base style for product items */
+.product-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    transition: all 0.3s ease; 
+    overflow: hidden;/* Smooth transition for hover effect */
+}
+
+
+/* Image styling */
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Product name styling */
+.product-item h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Price styling */
+.product-item h3 {
+    margin-top: 10px;
+    color: #555;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Hover effect for product items */
+.product-link:hover .product-item {
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 1);
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+@media (max-width: 1200px) {
+    .product-link {
+        flex: 1 1 calc(50% - 20px); /* 2 items per row on medium screens */
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .product-link {
+        flex: 1 1 calc(100% - 20px); /* 1 item per row on small screens */
+        max-width: calc(100% - 20px);
+    }
+}

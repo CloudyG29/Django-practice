@@ -1,10 +1,10 @@
 import os
 from .settings import *
 from .settings import BASE_DIR
+import dj_database_url
 
 SECRET_KEY = os.environ['SECRET']
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
-CSRF_TRUSTED_ORIGINS = ['https://'+os.environ['WEBSITE_HOSTNAME']]
 DEBUG = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -18,19 +18,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
-parameters= {pair.split('=')[0]:pair.split('=')[1] for pair in connection_string.split(' ')}
+
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':parameters['dbname'],
-        'HOST':parameters['host'],
-        'USER':parameters['user'],
-        'PASSWORD':parameters['password'],
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }

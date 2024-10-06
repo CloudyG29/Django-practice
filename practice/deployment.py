@@ -4,7 +4,7 @@ from .settings import BASE_DIR
 import dj_database_url
 
 SECRET_KEY = os.environ['SECRET']
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
+ALLOWED_HOSTS = ['phoneshop-o27b.onrender.com']
 DEBUG = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -2,8 +2,11 @@ import os
 from .settings import *
 from .settings import BASE_DIR
 import dj_database_url
+from dotenv import load_dotenv
 
-SECRET_KEY = os.environ['SECRET']
+load_dotenv()
+
+SECRET_KEY = os.getenv('SECRET')
 ALLOWED_HOSTS = ['phoneshop-o27b.onrender.com']
 DEBUG = True
 MIDDLEWARE = [
@@ -28,5 +31,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=600)
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'), conn_max_age=600)
 }
